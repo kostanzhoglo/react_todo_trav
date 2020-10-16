@@ -3,6 +3,8 @@ import Header from './components/layout/Header';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 
+import './App.css';
+
 class App extends Component {
   state = {
     todos: [
@@ -40,13 +42,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <AddTodo />
-        <Todos
-          todos={this.state.todos} 
-          toggleComplete={this.toggleComplete}
-          delTodo={this.delTodo}
-        />
+        <container>
+          <Header />
+          <AddTodo />
+          <Todos
+            todos={this.state.todos} 
+            toggleComplete={this.toggleComplete}
+            delTodo={this.delTodo}
+          />
+        </container>
       </div>
     );
   }
