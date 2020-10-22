@@ -26,6 +26,19 @@ class App extends Component {
     ]
   }
 
+  addTodo = (title) => {
+    const newTodo = {
+      id: 4,
+      title: title,           // since these are the same, you could also write this line as "title"
+      completed: false
+    }
+    this.setState({ todos: [...this.state.todos, newTodo] })
+  }
+
+  delTodo = (id) => {
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
+  }
+
   toggleComplete = (id) => {
     this.setState({ todos: this.state.todos.map(todo => {
       if(todo.id === id) {
@@ -35,16 +48,12 @@ class App extends Component {
     }) })
   }
 
-  delTodo = (id) => {
-    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
-  }
-
   render() {
     return (
       <div className="App">
         <container>
           <Header />
-          <AddTodo />
+          <AddTodo addTodo={this.addTodo} />
           <Todos
             todos={this.state.todos} 
             toggleComplete={this.toggleComplete}
